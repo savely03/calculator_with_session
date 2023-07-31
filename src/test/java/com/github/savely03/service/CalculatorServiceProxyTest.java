@@ -43,7 +43,7 @@ class CalculatorServiceProxyTest {
 
     @ParameterizedTest
     @MethodSource("provideArguments_NegativeCase")
-    void invokeWhenDefineOperationExceptionTest(String inputData) {
+    void invokeWhenInputDataExceptionTest(String inputData) {
         assertThatExceptionOfType(InputDataException.class).isThrownBy(
                 () -> out.invoke(inputData)
         );
