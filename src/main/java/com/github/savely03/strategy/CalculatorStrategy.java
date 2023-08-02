@@ -1,5 +1,8 @@
 package com.github.savely03.strategy;
 
+import java.math.BigDecimal;
+
+@FunctionalInterface
 public interface CalculatorStrategy {
-    double calculate(int num1, int num2);
+    BigDecimal calculate(double num1, double num2);
 }

@@ -9,6 +9,6 @@ public class DefineOperationException extends BaseException {
 
     @Override
     public String getMessage() {
-        return String.format("Невозможно определить операцию - %s", operation);
+        return String.format("Невозможно определить операцию - '%s'", operation);
     }
 }
