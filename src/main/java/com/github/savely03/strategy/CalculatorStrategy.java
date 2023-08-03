@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 @FunctionalInterface
 public interface CalculatorStrategy {
-    BigDecimal calculate(double num1, double num2);
+    BigDecimal calculate(BigDecimal num1, BigDecimal num2);
 }

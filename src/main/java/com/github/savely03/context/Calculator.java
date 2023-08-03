@@ -11,7 +11,7 @@ public class Calculator {
         this.calculatorStrategy = calculatorStrategy;
     }
 
-    public BigDecimal calculate(double num1, double num2) {
+    public BigDecimal calculate(BigDecimal num1, BigDecimal num2) {
         return calculatorStrategy.calculate(num1, num2);
     }
 }

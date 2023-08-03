@@ -8,14 +8,14 @@ import java.math.RoundingMode;
 
 public enum CalculatorStrategies implements CalculatorStrategy {
     DIVISION_STRATEGY((num1, num2) -> {
-        if (num2 == 0) { // Не стал создавать отдельный класс для проверки num2 (для простоты)
+        if (num2.compareTo(BigDecimal.ZERO) == 0) { // Не стал создавать отдельный класс для проверки num2 (для простоты)
             throw new DivideOnZeroException();
         }
-        return BigDecimal.valueOf(num1).divide(BigDecimal.valueOf(num2), 2, RoundingMode.HALF_UP);
+        return num1.divide(num2, 2, RoundingMode.HALF_UP);
     }),
-    MULTIPLICATION_STRATEGY((num1, num2) -> BigDecimal.valueOf(num1).multiply(BigDecimal.valueOf(num2))),
-    SUBTRACTION_STRATEGY((num1, num2) -> BigDecimal.valueOf(num1).subtract(BigDecimal.valueOf(num2))),
-    SUMMATION_STRATEGY((num1, num2) -> BigDecimal.valueOf(num1).add(BigDecimal.valueOf(num2)));
+    MULTIPLICATION_STRATEGY(BigDecimal::multiply),
+    SUBTRACTION_STRATEGY(BigDecimal::subtract),
+    SUMMATION_STRATEGY(BigDecimal::add);
 
     private final CalculatorStrategy strategy;
 
@@ -24,7 +24,7 @@ public enum CalculatorStrategies implements CalculatorStrategy {
     }
 
     @Override
-    public BigDecimal calculate(double num1, double num2) {
+    public BigDecimal calculate(BigDecimal num1, BigDecimal num2) {
         return strategy.calculate(num1, num2);
     }
 }

@@ -14,7 +14,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.10.0</junit.version>
     <assertj.version>3.24.2</assertj.version>
-    <java.version>17</java.version>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
   </properties>
 
   <dependencies>
@@ -49,8 +50,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
         </configuration>
       </plugin>
 
