@@ -8,7 +8,7 @@ import java.math.RoundingMode;
 
 public enum CalculatorStrategies implements CalculatorStrategy {
     DIVISION_STRATEGY((num1, num2) -> {
-        if (num2.compareTo(BigDecimal.ZERO) == 0) { // Не стал создавать отдельный класс для проверки num2 (для простоты)
+        if (num2.compareTo(BigDecimal.ZERO) == 0) { // Не стал создавать отдельную стратегию для проверки num2 (для простоты)
             throw new DivideOnZeroException();
         }
         return num1.divide(num2, 2, RoundingMode.HALF_UP);
