@@ -27,7 +27,7 @@ class CalculatorValidatorTest {
 
     @ParameterizedTest
     @MethodSource("provideArguments_NegativeCase")
-    void checkInputDataWhenInputDataExceptionTest(String inputData) {
+    void validateInputDataWhenInputDataExceptionTest(String inputData) {
         assertThatExceptionOfType(InputDataException.class).isThrownBy(
                 () -> out.validateInputData(inputData)
         );
