@@ -1,7 +1,7 @@
 package com.github.savely03.service;
 
 import com.github.savely03.exception.InvalidInputDataException;
-import com.github.savely03.util.CalculatorValidator;
+import com.github.savely03.validation.CalculatorValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

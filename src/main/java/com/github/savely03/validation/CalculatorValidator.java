@@ -1,4 +1,4 @@
-package com.github.savely03.util;
+package com.github.savely03.validation;
 
 import com.github.savely03.exception.InvalidInputDataException;
 

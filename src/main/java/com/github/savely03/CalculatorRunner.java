@@ -2,7 +2,7 @@ package com.github.savely03;
 
 import com.github.savely03.exception.BaseException;
 import com.github.savely03.service.CalculatorService;
-import com.github.savely03.util.CalculatorValidator;
+import com.github.savely03.validation.CalculatorValidator;
 
 import java.util.Scanner;
 

@@ -5,7 +5,7 @@ import com.github.savely03.service.CalculatorService;
 import com.github.savely03.service.impl.CalculatorServiceImpl;
 import com.github.savely03.service.impl.CalculatorServiceProxy;
 import com.github.savely03.strategy.CalculatorStrategyDefiner;
-import com.github.savely03.util.CalculatorValidator;
+import com.github.savely03.validation.CalculatorValidator;
 
 public class Main {
     public static void main(String[] args) {
