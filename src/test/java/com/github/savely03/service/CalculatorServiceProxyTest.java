@@ -1,7 +1,10 @@
 package com.github.savely03.service;
 
+import com.github.savely03.context.CalculatorContext;
 import com.github.savely03.exception.DivideOnZeroException;
+import com.github.savely03.service.impl.CalculatorServiceImpl;
 import com.github.savely03.service.impl.CalculatorServiceProxy;
+import com.github.savely03.strategy.CalculatorStrategyDefiner;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,7 +18,12 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 // Тесты на CalculatorServiceProxy одновременно покрывают CalculatorServiceImpl
 class CalculatorServiceProxyTest {
-    private final CalculatorService out = new CalculatorServiceProxy();
+    private final CalculatorService out = new CalculatorServiceProxy(
+            new CalculatorServiceImpl(
+                    new CalculatorContext(),
+                    new CalculatorStrategyDefiner()
+            )
+    );
 
     static Stream<Arguments> provideArguments() {
         return Stream.of(

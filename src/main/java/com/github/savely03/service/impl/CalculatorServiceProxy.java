@@ -1,8 +1,6 @@
 package com.github.savely03.service.impl;
 
-import com.github.savely03.context.Calculator;
 import com.github.savely03.service.CalculatorService;
-import com.github.savely03.strategy.StrategyDefiner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +12,8 @@ public class CalculatorServiceProxy implements CalculatorService {
     private final Map<String, String> cache;
     private final List<String> sessions;
 
-    public CalculatorServiceProxy() {
-        calculatorService = new CalculatorServiceImpl(new Calculator(), new StrategyDefiner());
+    public CalculatorServiceProxy(CalculatorService calculatorService) {
+        this.calculatorService = calculatorService;
         cache = new HashMap<>();
         sessions = new ArrayList<>();
     }

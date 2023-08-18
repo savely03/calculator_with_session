@@ -1,6 +1,6 @@
 package com.github.savely03.service;
 
-import com.github.savely03.exception.InputDataException;
+import com.github.savely03.exception.InvalidInputDataException;
 import com.github.savely03.util.CalculatorValidator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -28,7 +28,7 @@ class CalculatorValidatorTest {
     @ParameterizedTest
     @MethodSource("provideArguments_NegativeCase")
     void validateInputDataWhenInputDataExceptionTest(String inputData) {
-        assertThatExceptionOfType(InputDataException.class).isThrownBy(
+        assertThatExceptionOfType(InvalidInputDataException.class).isThrownBy(
                 () -> out.validateInputData(inputData)
         );
     }

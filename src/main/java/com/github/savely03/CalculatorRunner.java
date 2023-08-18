@@ -2,7 +2,6 @@ package com.github.savely03;
 
 import com.github.savely03.exception.BaseException;
 import com.github.savely03.service.CalculatorService;
-import com.github.savely03.service.impl.CalculatorServiceProxy;
 import com.github.savely03.util.CalculatorValidator;
 
 import java.util.Scanner;
@@ -10,13 +9,14 @@ import java.util.Scanner;
 public class CalculatorRunner {
 
     private final CalculatorValidator calculatorValidator;
+    private final CalculatorService calculatorService;
 
-    public CalculatorRunner() {
-        calculatorValidator = new CalculatorValidator();
+    public CalculatorRunner(CalculatorValidator calculatorValidator, CalculatorService calculatorService) {
+        this.calculatorValidator = calculatorValidator;
+        this.calculatorService = calculatorService;
     }
 
     public void run() {
-        CalculatorService calculatorService = new CalculatorServiceProxy();
         try (Scanner in = new Scanner(System.in)) {
             while (true) {
                 String inputData = in.nextLine();

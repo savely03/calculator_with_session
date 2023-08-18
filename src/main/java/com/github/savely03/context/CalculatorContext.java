@@ -4,7 +4,7 @@ import com.github.savely03.strategy.CalculatorStrategy;
 
 import java.math.BigDecimal;
 
-public class Calculator {
+public class CalculatorContext {
     private CalculatorStrategy calculatorStrategy;
 
     public void setCalculatorStrategy(CalculatorStrategy calculatorStrategy) {

@@ -11,4 +11,7 @@ public class Constants {
     public static String MUL_RES = NUM_1.multiply(NUM_2).toString();
     public static String SUB_RES = NUM_1.subtract(NUM_2).toString();
     public static String DIV_RES = NUM_1.divide(NUM_2, 2, RoundingMode.HALF_UP).toString();
+
+    private Constants() {
+    }
 }
