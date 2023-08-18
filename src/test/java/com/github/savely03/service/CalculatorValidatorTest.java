@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.github.savely03.service.Constants.NUM_1;
-import static com.github.savely03.service.Constants.NUM_2;
+import static com.github.savely03.service.CalculatorTestConstants.NUM_1;
+import static com.github.savely03.service.CalculatorTestConstants.NUM_2;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CalculatorValidatorTest {
