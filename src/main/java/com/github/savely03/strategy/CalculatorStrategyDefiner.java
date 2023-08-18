@@ -13,7 +13,7 @@ public class CalculatorStrategyDefiner {
             "+", BigDecimal::add,
             "-", BigDecimal::subtract,
             "*", BigDecimal::multiply,
-            "/", (num1, num2) -> { // Не очень крависово, но не стал создавать отдельную стратегию (для простоты)
+            "/", (num1, num2) -> { // Не очень гуд, но не стал создавать отдельную стратегию (для простоты)
                 if (num2.equals(BigDecimal.ZERO)) {
                     throw new DivideOnZeroException();
                 }
