@@ -1,7 +1,7 @@
 package com.github.savely03.strategy;
 
 import com.github.savely03.exception.DefineOperationException;
-import com.github.savely03.exception.DivideOnZeroException;
+import com.github.savely03.exception.DivideByZeroException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,7 +15,7 @@ public class CalculatorStrategyDefiner {
             "*", BigDecimal::multiply,
             "/", (num1, num2) -> { // Не очень гуд, но не стал создавать отдельную стратегию (для простоты)
                 if (num2.equals(BigDecimal.ZERO)) {
-                    throw new DivideOnZeroException();
+                    throw new DivideByZeroException();
                 }
                 return num1.divide(num2, 2, RoundingMode.HALF_UP);
             }

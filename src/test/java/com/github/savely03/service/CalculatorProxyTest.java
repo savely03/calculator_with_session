@@ -1,9 +1,9 @@
 package com.github.savely03.service;
 
 import com.github.savely03.context.CalculatorContext;
-import com.github.savely03.exception.DivideOnZeroException;
-import com.github.savely03.service.impl.CalculatorServiceImpl;
-import com.github.savely03.service.impl.CalculatorServiceProxy;
+import com.github.savely03.exception.DivideByZeroException;
+import com.github.savely03.service.impl.CalculatorImpl;
+import com.github.savely03.service.impl.CalculatorProxy;
 import com.github.savely03.strategy.CalculatorStrategyDefiner;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,9 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 // Тесты на CalculatorServiceProxy одновременно покрывают CalculatorServiceImpl
-class CalculatorServiceProxyTest {
-    private final CalculatorService out = new CalculatorServiceProxy(
-            new CalculatorServiceImpl(
+class CalculatorProxyTest {
+    private final Calculator out = new CalculatorProxy(
+            new CalculatorImpl(
                     new CalculatorContext(),
                     new CalculatorStrategyDefiner()
             )
@@ -37,20 +37,20 @@ class CalculatorServiceProxyTest {
     @ParameterizedTest
     @MethodSource("provideArguments")
     void invokeTest(String inputData, String expected) {
-        assertThat(out.invoke(inputData)).isEqualTo(expected);
+        assertThat(out.calculate(inputData)).isEqualTo(expected);
     }
 
     @Test
     void invokeWhenDivideOnZeroExceptionTest() {
-        assertThatExceptionOfType(DivideOnZeroException.class).isThrownBy(
-                () -> out.invoke(NUM_1 + " / " + 0)
+        assertThatExceptionOfType(DivideByZeroException.class).isThrownBy(
+                () -> out.calculate(NUM_1 + " / " + 0)
         );
     }
 
     @Test
     void invokeWhenInputEndTest() {
-        out.invoke(NUM_1 + " + " + NUM_2);
-        out.invoke(NUM_1 + " + " + NUM_2);
+        out.calculate(NUM_1 + " + " + NUM_2);
+        out.calculate(NUM_1 + " + " + NUM_2);
 
         String expected = String.format("""
                         %s + %s = %s
@@ -59,6 +59,6 @@ class CalculatorServiceProxyTest {
                 NUM_1, NUM_2, SUM_RES
         );
 
-        assertThat(out.invoke("/end")).isEqualTo(expected);
+        assertThat(out.calculate("/end")).isEqualTo(expected);
     }
 }

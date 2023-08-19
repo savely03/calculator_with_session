@@ -1,25 +1,25 @@
 package com.github.savely03.service.impl;
 
-import com.github.savely03.service.CalculatorService;
+import com.github.savely03.service.Calculator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CalculatorServiceProxy implements CalculatorService {
-    private final CalculatorService calculatorService;
+public class CalculatorProxy implements Calculator {
+    private final Calculator calculator;
     private final Map<String, String> cache;
     private final List<String> sessions;
 
-    public CalculatorServiceProxy(CalculatorService calculatorService) {
-        this.calculatorService = calculatorService;
+    public CalculatorProxy(Calculator calculatorService) {
+        this.calculator = calculatorService;
         cache = new HashMap<>();
         sessions = new ArrayList<>();
     }
 
     @Override
-    public String invoke(String inputData) {
+    public String calculate(String inputData) {
         if ("/end".equals(inputData)) {
             return getSessions();
         }
@@ -29,7 +29,7 @@ public class CalculatorServiceProxy implements CalculatorService {
             return cache.get(inputData);
         }
 
-        String result = calculatorService.invoke(inputData);
+        String result = calculator.calculate(inputData);
         cache.put(inputData, result);
         sessions.add(String.format("%s = %s", inputData, result));
 

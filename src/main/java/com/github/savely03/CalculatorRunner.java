@@ -1,19 +1,18 @@
 package com.github.savely03;
 
 import com.github.savely03.exception.BaseException;
-import com.github.savely03.service.CalculatorService;
+import com.github.savely03.service.Calculator;
 import com.github.savely03.validation.CalculatorValidator;
 
 import java.util.Scanner;
 
 public class CalculatorRunner {
-
     private final CalculatorValidator calculatorValidator;
-    private final CalculatorService calculatorService;
+    private final Calculator calculator;
 
-    public CalculatorRunner(CalculatorValidator calculatorValidator, CalculatorService calculatorService) {
+    public CalculatorRunner(CalculatorValidator calculatorValidator, Calculator calculatorService) {
         this.calculatorValidator = calculatorValidator;
-        this.calculatorService = calculatorService;
+        this.calculator = calculatorService;
     }
 
     public void run() {
@@ -22,7 +21,7 @@ public class CalculatorRunner {
                 String inputData = in.nextLine();
                 try {
                     calculatorValidator.validateInputData(inputData);
-                    System.out.println(calculatorService.invoke(inputData.trim()));
+                    System.out.println(calculator.calculate(inputData.trim()));
                 } catch (BaseException e) {
                     System.out.println(e.getMessage());
                 }
